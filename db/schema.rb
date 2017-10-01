@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20170930184546) do
 
   create_table "companies", force: true do |t|
     t.string   "company_name"
-    t.integer  "company_number"
+    t.string   "company_number"
     t.string   "company_type"
     t.hstore   "address"
     t.hstore   "accounts"

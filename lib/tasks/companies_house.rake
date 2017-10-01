@@ -8,16 +8,18 @@ namespace :companies_house do
 
     CSV.foreach(path, headers: true) do |row|
       state = row["Accounts.AccountCategory"]
-      if state == "TOTAL EXEMPTION SMALL" || state == "TOTAL EXEMPTION FULL"
+      unless state == "DORMANT" || state == "NO ACCOUNTS FILED" || state == ""
         begin
-          company_number = row.to_h[" CompanyNumber"].rjust(8, '0').to_i
+          company_number = row.to_h[" CompanyNumber"].rjust(8, '0')
           Company.create(company_number: company_number)
           small_count += 1
-          p small_count
+          p "#{company_number} created - #{small_count} index"
         rescue Blanket::ResourceNotFound => e
           p e.body
+          p "Company Number: #{company_number}"
         rescue => e
           p e
+          p "Company Number: #{company_number}"
         end
       end
     end

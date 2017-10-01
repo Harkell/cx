@@ -6,11 +6,11 @@ class Company < ActiveRecord::Base
 
     def api_call
       companies_house = Blanket::wrap("https://api.companieshouse.gov.uk/", headers: {"Authorization" => "Basic Qmd3b2NGOGEtcUI0Ym02UWJnd2VTMlo1bU9nLW5UeEpTM0xGOHdWeDo="})
-      payload = companies_house.company(self.company_id).get
+      payload = companies_house.company(self.company_number).get
       data = payload.to_h
 
       self.update(
-        company_name: data[:company_name],
+        company_name: data[:company_name].gsub('\"', '"'),
         company_type: data[:type],
         address: data[:registered_office_address],
         accounts: data[:accounts],
@@ -25,13 +25,8 @@ class Company < ActiveRecord::Base
         can_file: data[:can_file]
       )
 
-      sleep(1.5) #REMOVE WHEN ASYNC ADDED
+      sleep(1) #REMOVE WHEN ASYNC ADDED
     end
     # handle_asynchronously :api_call
 
-    protected
-
-    def company_id
-      (self.company_number.to_s).rjust(8, '0')
-    end
 end
