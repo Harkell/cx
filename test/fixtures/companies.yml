@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company_name: MyString
+  company_number: 1
+  type: 
+  address: 
+  accounting_reference_date: 
+  overdue: false
+  has_charges: false
+  has_insolvency_history: false
+  jurisdiction: MyString
+  date_of_creation: 2017-09-30 19:45:46
+  company_status: false
+  last_made_up_to: 2017-09-30 19:45:46
+  sic_codes: 
+  can_file: false
+  period_start_on: 2017-09-30 19:45:46
+  period_end_on: 2017-09-30 19:45:46
+
+two:
+  company_name: MyString
+  company_number: 1
+  type: 
+  address: 
+  accounting_reference_date: 
+  overdue: false
+  has_charges: false
+  has_insolvency_history: false
+  jurisdiction: MyString
+  date_of_creation: 2017-09-30 19:45:46
+  company_status: false
+  last_made_up_to: 2017-09-30 19:45:46
+  sic_codes: 
+  can_file: false
+  period_start_on: 2017-09-30 19:45:46
+  period_end_on: 2017-09-30 19:45:46
