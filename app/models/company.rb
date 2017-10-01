@@ -10,7 +10,7 @@ class Company < ActiveRecord::Base
       data = payload.to_h
 
       self.update(
-        company_name: data[:company_name].gsub('\"', '"'),
+        company_name: data[:company_name],
         company_type: data[:type],
         address: data[:registered_office_address],
         accounts: data[:accounts],
