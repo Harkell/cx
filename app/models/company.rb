@@ -1,5 +1,5 @@
 class Company < ActiveRecord::Base
-    serialize :accounts, ActiveRecord::Coders::NestedHstore
+    serialize :accounts, ActiveRecord::Coders::NestedHstore # Nested HASH for postgres columns
     validates :company_number, uniqueness: true
     after_create :api_call
 
@@ -24,8 +24,7 @@ class Company < ActiveRecord::Base
         sic_codes: data[:sic_codes],
         can_file: data[:can_file]
       )
-
-      sleep(1) #REMOVE WHEN ASYNC ADDED
+      sleep(0.5)
     end
     # handle_asynchronously :api_call
 
