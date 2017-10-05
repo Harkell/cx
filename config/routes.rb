@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'companies/index'
+  get 'companies' => 'companies#index'
 
   #get 'companies/view'
   resources :companies, only: [:show], param: :company_number
