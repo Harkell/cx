@@ -6,6 +6,7 @@ namespace :companies_house do
     path = Rails.root.join("public", "companies_house.csv")
     small_count = 0
 
+
     # CSV is expected at public/companies_house.csv
     # CSV is in .gitignore but can be downloaded at URL below
     # http://download.companieshouse.gov.uk/en_output.html

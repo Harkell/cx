@@ -15,7 +15,11 @@ development:
   host: localhost
   username: postgres
   database: cx
+<<<<<<< HEAD
   password: cx
+=======
+  password: test123
+>>>>>>> 66bd670b8e978b70c237ece05ea7d3d6f233573b
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

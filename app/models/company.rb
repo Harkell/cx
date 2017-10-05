@@ -24,7 +24,8 @@ class Company < ActiveRecord::Base
         sic_codes: data[:sic_codes],
         can_file: data[:can_file]
       )
-      sleep(0.5)
+
+      sleep(1) #REMOVE WHEN ASYNC ADDED
     end
     # handle_asynchronously :api_call
 
