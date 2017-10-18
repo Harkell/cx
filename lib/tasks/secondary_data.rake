@@ -8,36 +8,24 @@ namespace :secondary_data do
   task :web => :environment do
     refs = Company.all.pluck(:company_number)
 
-
-
     refs.each do |ref|
       doc = Nokogiri::HTML(open('https://www.duedil.com/company/gb/' + ref))
-
       begin
+        website = doc.css('a[rel="nofollow"]')[0]['href'] if doc.css('a[rel="nofollow"]')[1]['href'].include?("http")
+        linkedin = doc.css('a[rel="nofollow"]')[1]['href'] if doc.css('a[rel="nofollow"]')[1]['href'].include?("http")
+        facebook = doc.css('a[rel="nofollow"]')[2]['href'] if doc.css('a[rel="nofollow"]')[2]['href'].include?("http")
+        twitter = doc.css('a[rel="nofollow"]')[3]['href'] if doc.css('a[rel="nofollow"]')[3]['href'].include?("http")
 
-        if doc.css('a[rel="nofollow"]')[1]['href'].include?("http")
-          website = doc.css('a[rel="nofollow"]')[0]['href']
-        end
-        if doc.css('a[rel="nofollow"]')[1]['href'].include?("http")
-          linkedin = doc.css('a[rel="nofollow"]')[1]['href']
-        end
-        if doc.css('a[rel="nofollow"]')[2]['href'].include?("http")
-          facebook = doc.css('a[rel="nofollow"]')[2]['href']
-        end
-        if doc.css('a[rel="nofollow"]')[3]['href'].include?("http")
-          twitter = doc.css('a[rel="nofollow"]')[3]['href']
-        end
-
-        puts website
-        puts linkedin
-        puts facebook
-        puts twitter
-
+        p website
+        p linkedin
+        p facebook
+        p twitter
         rescue => e
-        p e
+        p "Link not found."
       end
     end
   end
+
 
 end
 

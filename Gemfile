@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'blanket_wrapper' # API Wrapping
 gem 'pg' # Postgres Database
 gem 'nested-hstore' # Support for nested HSTORE
+gem 'rmagick' # Image processing based on the imagemagick C libraries
+gem 'tesseract-ocr' # Open source OCR
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
